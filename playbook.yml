@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+    
+    - name: pre- apt-get update
+      raw: sudo apt-get update -y
+
+    - name: install ppa
+      raw: sudo apt-get install software-properties-common python-software-properties -y
+
+    - name: repo for ansible
+      raw: sudo apt-add-repository ppa:ansible/ansible -y
+
+    - name: install ansible
+      apt: name=ansible state=present
+ 
+    - name: update ansible to latest, greatest
+      raw: sudo apt-get update -y && sudo apt-get install ansible -y
+
+    - name: pre-1 install Vim
+      apt: name=vim state=present
+
